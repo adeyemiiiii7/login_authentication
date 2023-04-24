@@ -8,6 +8,7 @@ import 'package:login_auth/pages/register_view.dart';
 import 'package:login_auth/pages/verify_email_view.dart';
 
 import 'firebase_options.dart';
+import 'dart:developer' as devtools show log;
 
 // Main function to start the app
 void main() {
@@ -26,7 +27,21 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: MaterialColor(
+          0xFFFFFFFF,
+          <int, Color>{
+            50: Color.fromARGB(179, 145, 141, 141),
+            100: Color.fromARGB(179, 165, 157, 157),
+            200: Color.fromARGB(179, 159, 153, 153),
+            300: Color.fromARGB(179, 180, 176, 176),
+            400: Color.fromARGB(179, 104, 103, 103),
+            500: Color.fromARGB(179, 107, 106, 106),
+            600: Color.fromARGB(179, 84, 82, 82),
+            700: Color.fromARGB(179, 86, 85, 85),
+            800: Color.fromARGB(179, 106, 104, 104),
+            900: Color.fromARGB(179, 90, 88, 88),
+          },
+        ),
       ),
       home: HomePage(),
       //creatiing routes for linking the pages
@@ -87,7 +102,9 @@ class _NotesViewState extends State<NotesView> {
         title: const Text('Main UI'),
         actions: [
           PopupMenuButton<MenuAction>(
-            onSelected: (value) {},
+            onSelected: (value) {
+              print('value');
+            },
             itemBuilder: (context) {
               return [
                 PopupMenuItem<MenuAction>(
