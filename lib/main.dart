@@ -103,7 +103,7 @@ class _NotesViewState extends State<NotesView> {
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) {
-              print('value');
+              devtools.log(value.toString());
             },
             itemBuilder: (context) {
               return [
