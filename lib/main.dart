@@ -103,11 +103,14 @@ class _NotesViewState extends State<NotesView> {
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) {
+              switch (value) {
+                
+              }
               devtools.log(value.toString());
             },
             itemBuilder: (context) {
               return [
-                PopupMenuItem<MenuAction>(
+                const PopupMenuItem<MenuAction>(
                   value: MenuAction.logout,
                   child: Text('Log Out'),
                 ),
@@ -118,4 +121,24 @@ class _NotesViewState extends State<NotesView> {
       ),
     );
   }
+}
+
+Future<bool> showLogOutDialog(BuildContext context) {
+  return showDialog<bool>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Sign out'),
+        content: const Text('Are you sure you want sign out?'),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: const Text('Cancel')),
+          TextButton(onPressed: () {}, child: const Text('Logout')),
+        ],
+      );
+    },
+  ).then((value) => value ?? false);
 }
